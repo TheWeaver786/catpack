@@ -21,7 +21,7 @@ _get_ziplink () {
             echo "${UPSTREAM_REPO}/archive/master.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL3NhbmR5MTcwOS9jYXR1c2VyYm90L2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZVdlYXZlcjc4Ni9jYXR1c2VyYm90L2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
     fi
 }
 
@@ -42,7 +42,7 @@ _get_repolink () {
     then
         rlink=`echo "${UPSTREAM_REPO}"`
     else
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL3NhbmR5MTcwOS9jYXR1c2VyYm90" | base64 -d`
+        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZVdlYXZlcjc4Ni9jYXR1c2VyYm90" | base64 -d`
     fi
     echo "$rlink"
 }
@@ -56,7 +56,7 @@ _run_catpack_git() {
     $(_run_python_code 'from git import Repo
 import sys
 
-OFFICIAL_UPSTREAM_REPO = "https://github.com/Mr-confused/catpack"
+OFFICIAL_UPSTREAM_REPO = "https://github.com/TheWeaver786/catpack"
 ACTIVE_BRANCH_NAME = "master"
 
 repo = Repo.init()
