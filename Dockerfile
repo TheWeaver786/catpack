@@ -6,6 +6,7 @@ RUN git clone https://github.com/TheWeaver786/catuserbot.git /root/userbot
 WORKDIR /root/userbot
 
 # Install requirements
+RUN pip install --upgrade pip setuptools wheel
 RUN pip3 install -U -r requirements.txt
 
 ENV PATH="/home/userbot/bin:$PATH"
