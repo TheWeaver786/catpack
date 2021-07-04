@@ -1,5 +1,4 @@
 FROM python:3.9
-WORKDIR /app/
 
 RUN echo deb http://http.us.debian.org/debian/ testing non-free contrib main > /etc/apt/sources.list && \
     apt -qq update
@@ -16,11 +15,12 @@ RUN apt -qq install -y --no-install-recommends \
     jq
 
 
-COPY requirements.txt .
+RUN git clone https://github.com/TheWeaver786/catuserbot.git /app/userbot
+#working directory 
+WORKDIR /app/userbot
 
-RUN pip3 install -r requirements.txt
-
-COPY . .
+# Install requirements
+RUN pip3 install -U -r requirements.txt
 
 
 ENV PATH="/home/userbot/bin:$PATH"
