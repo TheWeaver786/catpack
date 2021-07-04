@@ -1,16 +1,27 @@
-FROM ubuntu:18.04
-RUN apt update && apt upgrade -y
-RUN apt install --no-install-recommends -y curl git libffi-dev libjpeg-dev libwebp-dev python3-lxml python3-psycopg2 libpq-dev libcurl4-openssl-dev libxml2-dev libxslt1-dev python3-pip python3-sqlalchemy openssl wget python3 python3-dev libreadline-dev libyaml-dev gcc zlib1g ffmpeg libssl-dev libgconf-2-4 libxi6 unzip libopus0 libopus-dev python3-venv libmagickwand-dev pv tree mediainfo
+FROM python:3.9
+WORKDIR /app/
 
-#working directory 
-WORKDIR .
+RUN echo deb http://http.us.debian.org/debian/ testing non-free contrib main > /etc/apt/sources.list && \
+    apt -qq update
+RUN apt -qq install -y --no-install-recommends \
+    curl \
+    git \
+    gcc \
+    g++ \
+    build-essential \
+    gnupg2 \
+    unzip \
+    wget \
+    ffmpeg \
+    jq
 
-#clonning repo 
+
+COPY requirements.txt .
+
+RUN pip3 install -r requirements.txt
+
 COPY . .
 
-# Install requirements
-RUN pip3 install --upgrade pip setuptools wheel
-RUN pip3 install -U -r requirements.txt
 
 ENV PATH="/home/userbot/bin:$PATH"
 
