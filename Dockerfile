@@ -15,7 +15,7 @@ RUN apt -qq install -y --no-install-recommends \
     jq
 
 
-RUN git clone https://github.com/TheWeaver786/catuserbot.git /app/userbot
+RUN git clone -b qovery https://github.com/TheWeaver786/catuserbot.git /app/userbot
 #working directory 
 WORKDIR /app/userbot
 
